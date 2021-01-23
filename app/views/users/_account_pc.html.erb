@@ -1,0 +1,34 @@
+<div class="card-wrap my-5 mx-auto">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="card-title">アカウント</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <label class="col-3" for="email">
+            メールアドレス
+          </label>
+          <div class="col-9">
+            <%= @user.email %>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <label class="col-3" for="name">
+            ユーザーネーム
+          </label>
+          <div class="col-9">
+            <%= @user.name %>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="card-body">
+      <% if @user == current_user %>
+        <%= button_to "アカウント・パスワード編集", edit_user_registration_path, method: :get, class: "btn btn-primary w-25 ml-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>

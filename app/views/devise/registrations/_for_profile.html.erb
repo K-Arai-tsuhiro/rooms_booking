@@ -1,0 +1,23 @@
+
+<div class="form-group">
+  <%= f.label :profile_photo, "アイコン画像" %><br />
+  <%= f.file_field :profile_photo, autofocus: "off" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :introduction, "自己紹介" %>
+  <%= f.text_area :introduction, autofocus: true, class: "form-control" %>
+</div>
+
+  def update_without_current_password(params, *options)
+    params.delete(:current_password)
+    
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end 
+    
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end 

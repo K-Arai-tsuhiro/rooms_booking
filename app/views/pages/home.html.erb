@@ -1,0 +1,45 @@
+<section class="landing-picture">
+  <div class="container">
+    <div class="row pt-3">
+      <div class="col-md-6 offset-md-3 form-center">
+        <div>
+          <h3>INNR KANTOの宿探し</h3>
+          <p>洞穴からタワマンまで</p>     
+        </div>
+        <%= search_form_for @q, url: rooms_path, class: "md-form active-pink-4 mb-3", local: true do |f| %>
+          <%= f.text_field :address_or_roomname_or_description_cont_any, class: "form-control p-2", placeholder: "ルームをキーワードで検索" %>
+          <div class="d-none"><%= f.submit %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="recommend bg-white">
+  <div class="container overflow-hidden">
+    <div class="row my-5">
+      <h4>おすすめのエリア</h4>
+    </div>
+    <div class="row mb-5">
+      <div class="col-6 col-lg-3 panel-item pb-2">
+        <span>東京</span>
+        <%= link_to image_tag("tokyo.png", height: '360', width: '100%',
+          class: 'panel-image', alt: "東京"), { controller: :rooms, action: :index, q: {address_cont: "東京"}} %>
+      </div>
+      <div class="col-6 col-lg-3 panel-item pb-2">
+        <span>埼玉</span>
+        <%= link_to image_tag('saitama.png', width: '100%',
+          height: '360', class: "panel-image", alt: "埼玉"), { controller: :rooms, action: :index, q: {address_cont: "埼玉"}} %>
+      </div>
+      <div class="col-6 col-lg-3 panel-item pb-2">
+        <span>千葉</span>
+        <%= link_to image_tag('chiba.png', width: '100%',
+          height: '360', class: "panel-image", alt: "千葉"), { controller: :rooms, action: :index, q: {address_cont: "千葉"}} %>
+      </div> 
+      <div class="col-6 col-lg-3 panel-item pb-2">
+        <span>群馬</span>
+        <%= link_to image_tag('gunma.png', width: '100%',
+          height: '360', class: "panel-image", alt: "群馬"), { controller: :rooms, action: :index, q: {address_cont: "群馬"}} %>
+      </div> 
+    </div>
+  </div>
+</section>

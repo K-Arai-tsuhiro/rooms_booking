@@ -1,0 +1,31 @@
+<div class="wrapper margin-for-top">
+  <div class="container">
+    <h2>登録済みルーム一覧</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ルーム画像</th>
+          <th scope="col">ルーム名</th>
+          <th scope="col">ルーム紹介</th>
+          <th scope="col">料金</th>
+          <th scope="col">作成日</th>
+        </tr>
+      </thead>
+      <% @rooms.each do |room| %>
+        <tbody>
+          <tr>
+            <th scope="row">
+              <%= link_to room_path(room) do %>
+                <%= image_tag room.image.url(:icon) %>
+              <% end %>
+            </th>
+            <td><%= room.roomname %></td>
+            <td><%= room.description %></td>
+            <td>￥<%= room.fee %></td>
+            <td><%= l room.created_at %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>    
+  </div>
+</div>

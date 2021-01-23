@@ -1,0 +1,75 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="col-md-10 col-md-offset-1 mx-auto roomShow-wrap">
+      <div class="row room-wrap">
+        <div class="col-md-7">
+          <div class="card-left">
+            <%= image_tag @room.image.url(:medium), class: "card-img-top" %>
+            <div class="card-show">
+              <div class="card-left-detail">
+                <div class="card-left-username">
+                  <%= link_to profile_path(@profile), class: "no-text-decoration" do %>
+                    <%= image_tag avatar_url(@profile), class: "img-thumbnail room-profile-icon rounded-circle", width: '60' %>
+                  <% end %>
+                  <%= link_to profile_path(@profile), class: "text-dark no-text-decoration room-username mx-auto",
+                    title: @room.user.name do %>
+                    <strong class="letter-spacing-name"><%= @room.user.name %></strong>
+                  <% end %>
+                </div>
+                <div class="mt-2">
+                  <strong><%= @room.roomname %></strong>
+                </div>
+                <div class="m-2 d-md-none d-lg-block">
+                  <small><%= @room.description %></small>
+                </div>
+              </div>
+              <div class="address">
+                <p class="card-text">住所：<%= @room.address %></p>
+              </div>
+              <div class="post-time pt-3"><%= l @room.created_at %></div>
+              <hr>              
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="card devise-card">
+            <div class="reservation-form">
+              <div class="form-group text-center">
+                <h3>この宿に泊まる</h3>
+              </div>
+              <%= form_with model: @reservation, url: reservations_path, local: true do |f| %>
+                <div class="d-none">
+                  <%= f.label :room_id %>
+                  <%= f.number_field :room_id %>
+                </div>
+                <div class="form-group">
+                  <strong>￥<%= @room.fee %>
+                    <small>/1day</small>
+                  </strong>
+                </div>
+                <div class="form-group">
+                  <%= f.label :start_at, "チェックイン" %>
+                  <%= f.date_field :start_at, autofocus: true, class: "form-control" %>
+                </div>
+        
+                <div class="form-group">
+                  <%= f.label :end_at, "チェックアウト" %>
+                  <%= f.date_field :end_at, autofocus: true, class: "form-control" %>
+                </div>
+        
+                <div class="form-group">
+                  <%= f.label :persons, "人数" %>
+                  <%= f.number_field :persons, autofocus: true, class: "form-control" %>
+                </div>
+                
+                <div class="actions">
+                  <%= f.submit "予約する", class: "btn btn-primary w-100" %>
+                </div>
+              <% end %>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

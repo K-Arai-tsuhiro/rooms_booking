@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light border-bottom">
+  <div class="container">
+    <%= link_to('INNR KANTO', root_path, {class: "navbar-brand"}) %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to(current_user.name, current_user, {class: "nav-link letter-spacing-name"}) %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              メニュー
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "アカウント", current_user, class: "dropdown-item" %>
+              <%= link_to "プロフィール", profile_path(current_user), class: "dropdown-item" %>
+              <%= link_to "設定", edit_user_registration_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "ルーム登録", new_room_path, class: "dropdown-item" %>
+              <%= link_to "登録済みルーム一覧", posted_path, class: "dropdown-item" %>
+              <%= link_to "予約済みルーム一覧", reservations_path, class: "dropdown-item" %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "サインアウト", destroy_user_session_path, method: :delete , class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item mx-0 mx-lg-2 my-2 my-lg-0">
+            <%= button_to "ログイン", new_user_session_path, method: :get, class: 'btn btn-primary' %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "登録", new_user_registration_path, method: :get, class: 'btn btn-secondary' %>
+          </li>
+        <% end %>
+      </ul>
+      <%= search_form_for @q, url: rooms_path, class: "form-inline my-2 my-lg-0 mr-lg-2", local: true do |f| %>
+        <%= f.text_field :address_cont, class: "form-control p-2", placeholder: "エリアで検索" %>
+        <div class="d-none"><%= f.submit %></div>
+      <% end %>
+      <%= search_form_for @q, url: rooms_path, class: "form-inline my-2 my-lg-0", local: true do |f| %>
+        <%= f.text_field :address_or_roomname_or_description_cont_any, class: "form-control p-2", placeholder: "キーワードで検索" %>
+        <div class="d-none"><%= f.submit %></div>
+      <% end %>
+    </div>
+  </div>
+</nav>
