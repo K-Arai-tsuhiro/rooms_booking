@@ -1,0 +1,33 @@
+<div class="wrapper margin-for-top">
+  <div class="container">
+    <% if params[:q][:address_cont].present? %>
+      <h2>検索結果：<%= params[:q][:address_cont] %></h2>
+    <% elsif params[:q][:address_or_roomname_or_description_cont_any].present? %>
+      <h2>検索結果：<%= params[:q][:address_or_roomname_or_description_cont_any] %></h2>
+    <% else %>
+      <h2>ルーム一覧</h2>
+    <% end %>
+    <div class="row">
+      <% @search_rooms.each do |room| %>
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <%= link_to(room_path(room)) do %>
+              <%= image_tag room.image.url(:icon), alt: "thumbnail", class: "card-img-top border-bottom" %>
+            <% end %>
+            <div class="card-body">
+              <div class="card-title"><strong><%= room.roomname %></strong></div>
+              <p class="card-text"><%= room.description %></p>
+              <p class="card-text"><%= room.address %></p>
+              <div class="align-items-center d-flex justify-content-between">
+                <div class="btn-group">
+                  <%= button_to "詳細", room_path(room), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+                </div>
+                <strong class="text-muted">￥<%= room.fee %></strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

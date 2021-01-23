@@ -1,0 +1,7 @@
+At first, set the seed file in db/seeds/user.rb
+
+# if you want to execute a seed file,
+bundle exec rake  db:seed:user
+
+# if you want to execute all seed files,
+require './db/seeds/実行したいseedファイル名.rb'

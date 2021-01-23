@@ -1,0 +1,51 @@
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+.room-wrap .col-md-7 {
+  padding: 0;
+}
+
+.card-show {
+  padding: 20px;
+}
+
+.card-left-username {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+}
+
+.card-left-detail {
+  padding-bottom: 10px;
+  height: 280px;
+  overflow: auto;
+}
+
+.roomShow-wrap {
+  margin: 40px;
+}
+
+.room-username {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.post-time {
+  border-top: 1px solid #e6e6e6;
+}
+
+.reservation-form {
+  padding: 20px;
+  width: 100%;
+  margin: 30px 0;
+}

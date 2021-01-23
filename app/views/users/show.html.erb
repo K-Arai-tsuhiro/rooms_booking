@@ -1,0 +1,30 @@
+<div class="wrapper">
+  <div class="row">
+    <div class="col-lg-3 d-none d-lg-block user-nav user-nav-pc">
+      <div class="row">
+        <div class="offset-2 col-10 text-right">
+          <ul class="nav flex-column">
+            <% if current_user == @user %>
+              <li class="nav-item"><%= link_to "アカウント", user_path, class: "nav-link" %></li>
+            <% end %>
+            <li class="nav-item"><%= link_to "プロフィール", profile_path, class: "nav-link" %></li>
+          </ul>          
+        </div>
+      </div>
+    </div>
+    <div class="col-12 d-lg-none user-nav user-nav-mobile border-bottom" style="width:2px;">
+      <ul class="nav">
+        <% if current_user == @user %>
+          <li class="nav-item"><%= link_to "アカウント", user_path, class: "nav-link" %></li>
+        <% end %>
+        <li class="nav-item"><%= link_to "プロフィール", "#", class: "nav-link" %></li>
+      </ul>      
+    </div>
+    <div class="col-lg-9 d-none d-lg-block border-left" style="width:2px;">
+      <%= render 'users/account_pc' %>
+    </div>
+    <div class="offset-1 col-10 d-lg-none">
+      <%= render 'users/account_mobile' %>
+    </div>  
+  </div>    
+</div>

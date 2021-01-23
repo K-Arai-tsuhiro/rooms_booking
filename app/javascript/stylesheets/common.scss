@@ -1,0 +1,27 @@
+body {
+  font-size: 14px;
+  color: #262626;
+  background-color: #f8f9fa !important;
+}
+
+ul, li {
+  list-style: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type="number"] { 
+  -moz-appearance:textfield; 
+}
+
+.margin-for-top {
+  padding-top: 60px;
+}
+
+.letter-spacing-name {
+  letter-spacing: 0.1rem;
+}

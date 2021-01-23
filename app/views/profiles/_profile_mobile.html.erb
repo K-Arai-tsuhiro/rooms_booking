@@ -1,0 +1,39 @@
+<div class="card-wrap my-5 mx-auto">
+  <div class="card">
+    <div class="card-header">プロフィール</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="offset-4 col-4 text-center">
+            <%= image_tag avatar_url(@profile), class: "img-thumbnail rounded-circle" %>
+          </div>
+        </div>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <label class="col-4" for="introduction">
+            ユーザーネーム
+          </label>
+          <div class="col-8">
+            <%= @profile.user.name %>
+          </div>
+        </div>
+      </li>      
+      <li class="list-group-item">
+        <div class="row">
+          <label class="col-4" for="introduction">
+            自己紹介
+          </label>
+          <div class="col-8">
+            <%= @profile.introduction %>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="card-body">
+      <% if @profile.user == current_user %>
+        <%= button_to "プロフィール編集", edit_profile_path, method: :get, class: "btn btn-primary w-50 ml-2" %>
+      <% end %>
+    </div>
+  </div>
+</div>
